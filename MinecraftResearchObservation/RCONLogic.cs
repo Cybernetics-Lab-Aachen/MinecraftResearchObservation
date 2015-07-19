@@ -35,22 +35,10 @@ namespace MinecraftResearchObservation
 			DebugWindow.writeLine(string.Format("Starting the RCONLogic now.\n"));
 			RCONLogic.currentRunningTask = Task.Factory.StartNew(() =>
 	        {
-			    try
-			    {
-				    RCONLogic.rconClient.setupStream(RCONLogic.minecraftServer, password: RCONLogic.minecraftRCONPassword);
-					RCONLogic.rconClient.fireAndForgetMessage(RCONMessageType.Command, "gamerule commandBlockOutput false");
-					RCONLogic.rconClient.fireAndForgetMessage(RCONMessageType.Command, "gamerule logAdminCommands false");
-					RCONLogic.rconClient.fireAndForgetMessage(RCONMessageType.Command, "gamerule sendCommandFeedback false");
-			    }
-			    catch(Exception e)
-			    {
-			    	DebugWindow.writeLine(string.Format("Exception: {0}\n", e.Message));
-      				DebugWindow.writeLine(string.Format("Exception: {0}\n", e.StackTrace));
-			    	return;
-			    }
-			    
+			    RCONLogic.connect2RCONServer();
               	while(RCONLogic.isRunning)
               	{
+              		checkActiveServerConnection();
 	              	checkActivePlayers();
 	              	Thread.Sleep(TimeSpan.FromMilliseconds(100));
               	}
@@ -65,6 +53,49 @@ namespace MinecraftResearchObservation
 			{
 				RCONLogic.currentRunningTask.Wait();
 			}
+			
+			try
+			{
+				RCONLogic.rconClient.Dispose();
+			}
+			catch
+			{
+			}
+		}
+		
+		private static void connect2RCONServer()
+		{
+			try
+		    {
+				DebugWindow.writeLine(string.Format("Try to connect...\n"));
+			    RCONLogic.rconClient.setupStream(RCONLogic.minecraftServer, password: RCONLogic.minecraftRCONPassword);
+				RCONLogic.rconClient.fireAndForgetMessage(RCONMessageType.Command, "gamerule commandBlockOutput false");
+				RCONLogic.rconClient.fireAndForgetMessage(RCONMessageType.Command, "gamerule logAdminCommands false");
+				RCONLogic.rconClient.fireAndForgetMessage(RCONMessageType.Command, "gamerule sendCommandFeedback false");
+		    }
+		    catch(Exception e)
+		    {
+		    	DebugWindow.writeLine(string.Format("Exception: {0}\n", e.Message));
+				DebugWindow.writeLine(string.Format("Exception: {0}\n", e.StackTrace));
+		    	return;
+		    }
+		}
+		
+		private static void checkActiveServerConnection()
+		{
+			var answer = RCONLogic.rconClient.sendMessage(RCONMessageType.Command, @"help");
+			if(answer == string.Empty)
+			{
+				try
+				{
+					RCONLogic.rconClient.Dispose();
+				}
+				catch
+				{
+				}
+				
+				RCONLogic.connect2RCONServer();
+			}
 		}
 		
 		private static void checkActivePlayers()
@@ -72,6 +103,11 @@ namespace MinecraftResearchObservation
 			try
 			{
 				var answer = RCONLogic.rconClient.sendMessage(RCONMessageType.Command, @"list");
+				if(answer == string.Empty)
+				{
+					return;
+				}
+				
 				var start = answer.IndexOf(':') + 1;
 				var players = answer.Substring(start).Split(',');
 				var now = DateTime.UtcNow;
@@ -81,6 +117,11 @@ namespace MinecraftResearchObservation
 					var name = player.RemoveColorCodes().Trim();
 					
 					answer = RCONLogic.rconClient.sendMessage(RCONMessageType.Command, @"mc find " + name);
+					if(answer == string.Empty)
+					{
+						continue;
+					}
+					
 					var posText = answer.RemoveColorCodes();
 					var elements = posText.Split(' ');
 					var x = int.Parse(elements[5]);
