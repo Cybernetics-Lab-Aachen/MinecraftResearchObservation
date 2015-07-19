@@ -29,6 +29,25 @@ namespace MinecraftResearchObservation
 			}, TaskCreationOptions.LongRunning);
 		}
 		
+		public static void clearWindow()
+		{
+			Task.Run(() =>
+	        {
+	         	try
+				{
+					DebugWindow.mutex.EnterWriteLock();
+					DebugWindow.sb.Clear();
+				}
+				catch
+				{
+				}
+				finally
+				{
+					DebugWindow.mutex.ExitWriteLock();
+				}
+	        });
+		}
+		
 		private void refreshText()
 		{
 			if(this.textBox.InvokeRequired)
