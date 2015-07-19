@@ -14,6 +14,7 @@ namespace MinecraftResearchObservation
 		private string minecraftServer = string.Empty;
 		private string minecraftRCONPassword = string.Empty;
 		private bool isRunning = false;
+		private ReaderWriterLockSlim stateLock = new ReaderWriterLockSlim();
 		
 		public MainForm(string destinationFolder, string metaInformation, string minecraftServer, string minecraftRCONPassword)
 		{
@@ -40,40 +41,70 @@ namespace MinecraftResearchObservation
 		
 		void ButtonStartClick(object sender, EventArgs e)
 		{
-			if(this.isRunning)
+			this.stateLock.EnterWriteLock();
+			
+			try
 			{
-				return;
+				if(this.isRunning)
+				{
+					return;
+				}
+				
+				this.isRunning = true;
+				this.buttonState.Text = "State: Running";
+				
+				DebugWindow.writeLine(string.Format("Start recording.\n"));
+				
+				//Screenshot.startAutoScreenshot(8);
+				CSVWriter.startWriter();
+				RCONLogic.startLogic();
+				Task.Factory.StartNew(() => 
+	            {
+	              	while(this.isRunning)
+	              	{
+	              		animation();
+	              		Thread.Sleep(500);
+	              	}
+	              	
+	              	resetAnimation();
+	            }, TaskCreationOptions.LongRunning);
 			}
-			
-			this.isRunning = true;
-			this.buttonState.Text = "State: Running";
-			
-			DebugWindow.writeLine(string.Format("Start recording.\n"));
-			
-			//Screenshot.startAutoScreenshot(8);
-			CSVWriter.startWriter();
-			RCONLogic.startLogic();
-			Task.Factory.StartNew(() => 
-            {
-              	while(this.isRunning)
-              	{
-              		animation();
-              		Thread.Sleep(500);
-              	}
-              	
-              	resetAnimation();
-            }, TaskCreationOptions.LongRunning);
+			catch
+			{
+			}
+			finally
+			{
+				this.stateLock.ExitWriteLock();
+			}
 		}
 		
 		void ButtonStopClick(object sender, EventArgs e)
 		{
-			this.isRunning = false;
+			this.stateLock.EnterWriteLock();
 			
-			//Screenshot.stopAutoScreenshot();
-			RCONLogic.stopLogic();
-			CSVWriter.stopWriter();
-			
-			DebugWindow.writeLine(string.Format("Stop recording.\n"));
+			try
+			{
+				if(!this.isRunning)
+				{
+					return;
+				}
+				
+				Task.Run(() => {
+					//Screenshot.stopAutoScreenshot();
+					RCONLogic.stopLogic();
+					CSVWriter.stopWriter();
+					
+					this.isRunning = false;
+					DebugWindow.writeLine(string.Format("Stop recording.\n"));
+				});
+			}
+			catch
+			{
+			}
+			finally
+			{
+				this.stateLock.ExitWriteLock();
+			}
 		}
 		
 		void resetAnimation()

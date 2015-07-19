@@ -13,6 +13,7 @@ namespace MinecraftResearchObservation
 		private static string metaInfo = string.Empty;
 		private static StringBuilder sb = new StringBuilder();
 		private static ReaderWriterLockSlim mutex = new ReaderWriterLockSlim();
+		private static Task currentRunningTask = null;
 		
 		public static void setMetaInfo(string metaInfo)
 		{
@@ -38,7 +39,7 @@ namespace MinecraftResearchObservation
 			CSVWriter.sb.Clear();
 			CSVWriter.mutex.ExitWriteLock();
 			
-			Task.Factory.StartNew(() =>
+			CSVWriter.currentRunningTask = Task.Factory.StartNew(() =>
 	        {
                	var filename = string.Format("{1}SpatialStorage-{2}-{0:yyyyMMddHHmmss}.data", DateTime.Now, CSVWriter.destinationFolder, CSVWriter.metaInfo);
               	while(CSVWriter.isRunning)
@@ -69,6 +70,10 @@ namespace MinecraftResearchObservation
 		public static void stopWriter()
 		{
 			CSVWriter.isRunning = false;
+			if(CSVWriter.currentRunningTask != null)
+			{
+				CSVWriter.currentRunningTask.Wait();
+			}
 		}
 		
 		public static void writeLine(string line)

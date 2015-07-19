@@ -12,6 +12,7 @@ namespace MinecraftResearchObservation
 		private static string minecraftRCONPassword = string.Empty;
 		private static RCONClient rconClient = RCONClient.INSTANCE;
 		private static bool isRunning = false;
+		private static Task currentRunningTask = null;
 		
 		public static void setMinecraftServer(string minecraftServer)
 		{
@@ -32,7 +33,7 @@ namespace MinecraftResearchObservation
 			
 			RCONLogic.isRunning = true;
 			DebugWindow.writeLine(string.Format("Starting the RCONLogic now.\n"));
-			Task.Factory.StartNew(() =>
+			RCONLogic.currentRunningTask = Task.Factory.StartNew(() =>
 	        {
 			    try
 			    {
@@ -60,6 +61,10 @@ namespace MinecraftResearchObservation
 		public static void stopLogic()
 		{
 			RCONLogic.isRunning = false;
+			if(RCONLogic.currentRunningTask != null)
+			{
+				RCONLogic.currentRunningTask.Wait();
+			}
 		}
 		
 		private static void checkActivePlayers()
