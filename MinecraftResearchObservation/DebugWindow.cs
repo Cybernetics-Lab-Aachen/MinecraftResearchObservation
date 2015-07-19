@@ -34,6 +34,7 @@ namespace MinecraftResearchObservation
 			if(this.textBox.InvokeRequired)
 			{
 				this.textBox.Invoke(new ThreadStart(refreshText));
+				return;
 			}
 			
 			try
