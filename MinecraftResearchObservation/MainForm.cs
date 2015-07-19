@@ -139,5 +139,20 @@ namespace MinecraftResearchObservation
 				this.buttonState.BackColor = Color.LightGray;
 			}
 		}
+		
+		void ButtonClearClick(object sender, EventArgs e)
+		{
+			DebugWindow.clearWindow();
+		}
+		
+		void MainFormFormClosing(object sender, FormClosingEventArgs e)
+		{
+			if(this.isRunning)
+			{
+				MessageBox.Show("In order to close the window, you have to stop the recording!", "Recording is still running", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+				e.Cancel = true;
+				return;
+			}
+		}
 	}
 }

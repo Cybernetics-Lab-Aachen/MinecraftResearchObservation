@@ -10,6 +10,8 @@
 		private System.Windows.Forms.Button buttonStop;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.Button buttonState;
+		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+		private System.Windows.Forms.Button buttonClear;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -36,12 +38,15 @@
 			this.buttonStop = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.buttonState = new System.Windows.Forms.Button();
+			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+			this.buttonClear = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1.SuspendLayout();
+			this.flowLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// buttonStart
 			// 
-			this.buttonStart.Location = new System.Drawing.Point(4, 227);
+			this.buttonStart.Location = new System.Drawing.Point(4, 4);
 			this.buttonStart.Margin = new System.Windows.Forms.Padding(4);
 			this.buttonStart.Name = "buttonStart";
 			this.buttonStart.Size = new System.Drawing.Size(112, 32);
@@ -52,7 +57,7 @@
 			// 
 			// buttonStop
 			// 
-			this.buttonStop.Location = new System.Drawing.Point(485, 227);
+			this.buttonStop.Location = new System.Drawing.Point(124, 4);
 			this.buttonStop.Margin = new System.Windows.Forms.Padding(4);
 			this.buttonStop.Name = "buttonStop";
 			this.buttonStop.Size = new System.Drawing.Size(112, 32);
@@ -66,9 +71,8 @@
 			this.tableLayoutPanel1.ColumnCount = 2;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel1.Controls.Add(this.buttonStart, 0, 1);
-			this.tableLayoutPanel1.Controls.Add(this.buttonStop, 1, 1);
 			this.tableLayoutPanel1.Controls.Add(this.buttonState, 0, 0);
+			this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 0);
 			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
 			this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
@@ -91,6 +95,27 @@
 			this.buttonState.Text = "State: Stopped";
 			this.buttonState.UseVisualStyleBackColor = false;
 			// 
+			// flowLayoutPanel1
+			// 
+			this.flowLayoutPanel1.Controls.Add(this.buttonStart);
+			this.flowLayoutPanel1.Controls.Add(this.buttonStop);
+			this.flowLayoutPanel1.Controls.Add(this.buttonClear);
+			this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.flowLayoutPanel1.Location = new System.Drawing.Point(484, 3);
+			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+			this.flowLayoutPanel1.Size = new System.Drawing.Size(476, 217);
+			this.flowLayoutPanel1.TabIndex = 3;
+			// 
+			// buttonClear
+			// 
+			this.buttonClear.Location = new System.Drawing.Point(243, 3);
+			this.buttonClear.Name = "buttonClear";
+			this.buttonClear.Size = new System.Drawing.Size(150, 32);
+			this.buttonClear.TabIndex = 2;
+			this.buttonClear.Text = "Clear messages";
+			this.buttonClear.UseVisualStyleBackColor = true;
+			this.buttonClear.Click += new System.EventHandler(this.ButtonClearClick);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -102,7 +127,9 @@
 			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "MainForm";
 			this.Text = "MinecraftResearchObservation";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormFormClosing);
 			this.tableLayoutPanel1.ResumeLayout(false);
+			this.flowLayoutPanel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
