@@ -37,7 +37,10 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="MinecraftServerRCON">
-      <HintPath>..\..\MinecraftServerRCONSharp\MinecraftServerRCON\MinecraftServerRCON\bin\Release\MinecraftServerRCON.dll</HintPath>
+      <HintPath>..\packages\RCONServer.1.0.2\lib\net45\MinecraftServerRCON.dll</HintPath>
+    </Reference>
+    <Reference Include="NETools">
+      <HintPath>..\packages\NETools.1.0.7\lib\net45\NETools.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -80,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings1.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings1.Designer.cs</LastGenOutput>

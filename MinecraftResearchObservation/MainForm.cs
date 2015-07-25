@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NETools.IO;
 
 namespace MinecraftResearchObservation
 {
@@ -36,7 +37,17 @@ namespace MinecraftResearchObservation
 			RCONLogic.setMinecraftRCONPassword(this.minecraftRCONPassword);
 			
 			new DebugWindow().Show(this);
+			
+			// Redirect any outpout to the standard out also in the message i.e. debug window:
+			Console.SetOut(new LineEventWriter(lineReceiver));
 			DebugWindow.writeLine(string.Format("Init done: Ready.\n"));
+		}
+		
+		private bool lineReceiver(string line)
+		{
+			// Redirect any outpout to the standard out also in the message i.e. debug window:
+			DebugWindow.writeLine(line + '\n');
+			return true;
 		}
 		
 		void ButtonStartClick(object sender, EventArgs e)
