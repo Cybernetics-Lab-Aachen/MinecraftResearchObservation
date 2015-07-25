@@ -12,6 +12,8 @@
 		private System.Windows.Forms.Button buttonState;
 		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
 		private System.Windows.Forms.Button buttonClear;
+		private System.Windows.Forms.Button buttonPluginDistributedInventory;
+		private System.Windows.Forms.Button buttonPluginExcuteCommands4EachPlayerOnce;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -40,6 +42,8 @@
 			this.buttonState = new System.Windows.Forms.Button();
 			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
 			this.buttonClear = new System.Windows.Forms.Button();
+			this.buttonPluginDistributedInventory = new System.Windows.Forms.Button();
+			this.buttonPluginExcuteCommands4EachPlayerOnce = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.flowLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
@@ -100,6 +104,8 @@
 			this.flowLayoutPanel1.Controls.Add(this.buttonStart);
 			this.flowLayoutPanel1.Controls.Add(this.buttonStop);
 			this.flowLayoutPanel1.Controls.Add(this.buttonClear);
+			this.flowLayoutPanel1.Controls.Add(this.buttonPluginDistributedInventory);
+			this.flowLayoutPanel1.Controls.Add(this.buttonPluginExcuteCommands4EachPlayerOnce);
 			this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.flowLayoutPanel1.Location = new System.Drawing.Point(484, 3);
 			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -108,13 +114,38 @@
 			// 
 			// buttonClear
 			// 
-			this.buttonClear.Location = new System.Drawing.Point(243, 3);
+			this.buttonClear.Location = new System.Drawing.Point(244, 4);
+			this.buttonClear.Margin = new System.Windows.Forms.Padding(4);
 			this.buttonClear.Name = "buttonClear";
 			this.buttonClear.Size = new System.Drawing.Size(150, 32);
 			this.buttonClear.TabIndex = 2;
 			this.buttonClear.Text = "Clear messages";
 			this.buttonClear.UseVisualStyleBackColor = true;
 			this.buttonClear.Click += new System.EventHandler(this.ButtonClearClick);
+			// 
+			// buttonPluginDistributedInventory
+			// 
+			this.buttonPluginDistributedInventory.BackColor = System.Drawing.Color.LightGray;
+			this.buttonPluginDistributedInventory.Location = new System.Drawing.Point(4, 44);
+			this.buttonPluginDistributedInventory.Margin = new System.Windows.Forms.Padding(4);
+			this.buttonPluginDistributedInventory.Name = "buttonPluginDistributedInventory";
+			this.buttonPluginDistributedInventory.Size = new System.Drawing.Size(232, 32);
+			this.buttonPluginDistributedInventory.TabIndex = 3;
+			this.buttonPluginDistributedInventory.Text = "Plugin: Distributed Inventory";
+			this.buttonPluginDistributedInventory.UseVisualStyleBackColor = false;
+			this.buttonPluginDistributedInventory.Click += new System.EventHandler(this.ButtonPluginDistributedInventoryClick);
+			// 
+			// buttonPluginExcuteCommands4EachPlayerOnce
+			// 
+			this.buttonPluginExcuteCommands4EachPlayerOnce.BackColor = System.Drawing.Color.LightGray;
+			this.buttonPluginExcuteCommands4EachPlayerOnce.Location = new System.Drawing.Point(4, 84);
+			this.buttonPluginExcuteCommands4EachPlayerOnce.Margin = new System.Windows.Forms.Padding(4);
+			this.buttonPluginExcuteCommands4EachPlayerOnce.Name = "buttonPluginExcuteCommands4EachPlayerOnce";
+			this.buttonPluginExcuteCommands4EachPlayerOnce.Size = new System.Drawing.Size(377, 32);
+			this.buttonPluginExcuteCommands4EachPlayerOnce.TabIndex = 4;
+			this.buttonPluginExcuteCommands4EachPlayerOnce.Text = "Plugin: Execute commands once for each player";
+			this.buttonPluginExcuteCommands4EachPlayerOnce.UseVisualStyleBackColor = false;
+			this.buttonPluginExcuteCommands4EachPlayerOnce.Click += new System.EventHandler(this.ButtonPluginExcuteCommands4EachPlayerOnceClick);
 			// 
 			// MainForm
 			// 

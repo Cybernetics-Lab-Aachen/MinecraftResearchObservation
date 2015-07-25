@@ -165,5 +165,41 @@ namespace MinecraftResearchObservation
 				return;
 			}
 		}
+		
+		void ButtonPluginDistributedInventoryClick(object sender, EventArgs e)
+		{
+			if(!PluginDistributedInventory.PluginIsActive)
+			{
+				var dialog = new PluginDistributedInventoryConfig();
+				if(dialog.ShowDialog(this) != DialogResult.OK)
+				{
+					return;
+				}
+				
+				PluginDistributedInventory.DestinationCountPlayers = dialog._CountPlayers;
+				PluginDistributedInventory.Items = dialog._Items;
+				PluginDistributedInventory.RestrictedWorldCommand = dialog._RestrictedWorldCommand;
+			}
+			
+			PluginDistributedInventory.PluginIsActive = !PluginDistributedInventory.PluginIsActive;
+			this.buttonPluginDistributedInventory.BackColor = PluginDistributedInventory.PluginIsActive ? Color.Orange : Color.LightGray;
+		}
+		
+		void ButtonPluginExcuteCommands4EachPlayerOnceClick(object sender, EventArgs e)
+		{
+			if(!PluginExecuteCommandsOnce4EachPlayer.PluginIsActive)
+			{
+				var dialog = new PluginExecuteCommandsOnce4EachPlayerConfig();
+				if(dialog.ShowDialog(this) != DialogResult.OK)
+				{
+					return;
+				}
+				
+				PluginExecuteCommandsOnce4EachPlayer.Commands = dialog._Commands;
+			}
+			
+			PluginExecuteCommandsOnce4EachPlayer.PluginIsActive = !PluginExecuteCommandsOnce4EachPlayer.PluginIsActive;
+			this.buttonPluginExcuteCommands4EachPlayerOnce.BackColor = PluginExecuteCommandsOnce4EachPlayer.PluginIsActive ? Color.Orange : Color.LightGray;
+		}
 	}
 }

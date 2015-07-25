@@ -75,7 +75,7 @@
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(621, 245);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(617, 241);
 			this.tableLayoutPanel1.TabIndex = 0;
 			// 
 			// label1
@@ -84,7 +84,7 @@
 			this.label1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label1.Location = new System.Drawing.Point(3, 0);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(304, 60);
+			this.label1.Size = new System.Drawing.Size(302, 60);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "1. Please select the destination folder";
 			// 
@@ -92,9 +92,9 @@
 			// 
 			this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.label2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label2.Location = new System.Drawing.Point(313, 0);
+			this.label2.Location = new System.Drawing.Point(311, 0);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(305, 60);
+			this.label2.Size = new System.Drawing.Size(303, 60);
 			this.label2.TabIndex = 1;
 			this.label2.Text = "2. Please provide some meta information";
 			// 
@@ -103,7 +103,7 @@
 			this.buttonDestinationFolder.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.buttonDestinationFolder.Location = new System.Drawing.Point(3, 63);
 			this.buttonDestinationFolder.Name = "buttonDestinationFolder";
-			this.buttonDestinationFolder.Size = new System.Drawing.Size(304, 34);
+			this.buttonDestinationFolder.Size = new System.Drawing.Size(302, 34);
 			this.buttonDestinationFolder.TabIndex = 2;
 			this.buttonDestinationFolder.Text = "Select destionation folder";
 			this.buttonDestinationFolder.UseVisualStyleBackColor = true;
@@ -113,9 +113,9 @@
 			// 
 			this.textBoxMetaInformation.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.textBoxMetaInformation.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBoxMetaInformation.Location = new System.Drawing.Point(313, 63);
+			this.textBoxMetaInformation.Location = new System.Drawing.Point(311, 63);
 			this.textBoxMetaInformation.Name = "textBoxMetaInformation";
-			this.textBoxMetaInformation.Size = new System.Drawing.Size(305, 32);
+			this.textBoxMetaInformation.Size = new System.Drawing.Size(303, 32);
 			this.textBoxMetaInformation.TabIndex = 4;
 			this.textBoxMetaInformation.Text = "Experiment B, Sample 001";
 			// 
@@ -126,7 +126,7 @@
 			this.buttonOK.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.buttonOK.Location = new System.Drawing.Point(3, 203);
 			this.buttonOK.Name = "buttonOK";
-			this.buttonOK.Size = new System.Drawing.Size(615, 34);
+			this.buttonOK.Size = new System.Drawing.Size(611, 34);
 			this.buttonOK.TabIndex = 3;
 			this.buttonOK.Text = "5. Start the program";
 			this.buttonOK.UseVisualStyleBackColor = true;
@@ -138,7 +138,7 @@
 			this.label3.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label3.Location = new System.Drawing.Point(3, 100);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(304, 60);
+			this.label3.Size = new System.Drawing.Size(302, 60);
 			this.label3.TabIndex = 5;
 			this.label3.Text = "3. Please provide the IP address for the Minecraft server";
 			// 
@@ -146,9 +146,9 @@
 			// 
 			this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.label4.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label4.Location = new System.Drawing.Point(313, 100);
+			this.label4.Location = new System.Drawing.Point(311, 100);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(305, 60);
+			this.label4.Size = new System.Drawing.Size(303, 60);
 			this.label4.TabIndex = 6;
 			this.label4.Text = "4. Please provide the Minecraft RCON server\'s password";
 			// 
@@ -158,7 +158,7 @@
 			this.textBoxMinecraftServer.Font = new System.Drawing.Font("Arial", 15.75F);
 			this.textBoxMinecraftServer.Location = new System.Drawing.Point(3, 163);
 			this.textBoxMinecraftServer.Name = "textBoxMinecraftServer";
-			this.textBoxMinecraftServer.Size = new System.Drawing.Size(304, 32);
+			this.textBoxMinecraftServer.Size = new System.Drawing.Size(302, 32);
 			this.textBoxMinecraftServer.TabIndex = 7;
 			this.textBoxMinecraftServer.Text = "127.0.0.1";
 			// 
@@ -166,10 +166,10 @@
 			// 
 			this.textBoxRCONPassword.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.textBoxRCONPassword.Font = new System.Drawing.Font("Arial", 15.75F);
-			this.textBoxRCONPassword.Location = new System.Drawing.Point(313, 163);
+			this.textBoxRCONPassword.Location = new System.Drawing.Point(311, 163);
 			this.textBoxRCONPassword.Name = "textBoxRCONPassword";
 			this.textBoxRCONPassword.PasswordChar = '*';
-			this.textBoxRCONPassword.Size = new System.Drawing.Size(305, 32);
+			this.textBoxRCONPassword.Size = new System.Drawing.Size(303, 32);
 			this.textBoxRCONPassword.TabIndex = 8;
 			this.textBoxRCONPassword.Text = "123456";
 			// 
@@ -178,7 +178,7 @@
 			this.AcceptButton = this.buttonOK;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(621, 245);
+			this.ClientSize = new System.Drawing.Size(617, 241);
 			this.ControlBox = false;
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

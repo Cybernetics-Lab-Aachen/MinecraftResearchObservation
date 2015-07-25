@@ -112,6 +112,10 @@ namespace MinecraftResearchObservation
 				var players = answer.Substring(start).Split(',');
 				var now = DateTime.UtcNow;
 				
+				// Call the plugins:
+				PluginExecuteCommandsOnce4EachPlayer.executePlugin(RCONLogic.rconClient, players);
+				PluginDistributedInventory.executePlugin(RCONLogic.rconClient, players);
+				
 				foreach(var player in players.Where(n => n != string.Empty))
 				{
 					var name = player.RemoveColorCodes().Trim();
