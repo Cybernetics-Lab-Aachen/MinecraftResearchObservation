@@ -97,7 +97,7 @@ namespace MinecraftResearchObservation
 			this.textBoxCommands.ScrollBars = System.Windows.Forms.ScrollBars.Both;
 			this.textBoxCommands.Size = new System.Drawing.Size(429, 160);
 			this.textBoxCommands.TabIndex = 2;
-			this.textBoxCommands.Text = "sk load $NAME$";
+			this.textBoxCommands.Text = "sk load $NAME$\r\ngamemode survival $NAME$";
 			this.textBoxCommands.WordWrap = false;
 			// 
 			// PluginExecuteCommandsOnce4EachPlayerConfig
