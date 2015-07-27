@@ -159,7 +159,7 @@ namespace MinecraftResearchObservation
 			this.textBoxRestrictedWorldCommand.Name = "textBoxRestrictedWorldCommand";
 			this.textBoxRestrictedWorldCommand.Size = new System.Drawing.Size(464, 32);
 			this.textBoxRestrictedWorldCommand.TabIndex = 5;
-			this.textBoxRestrictedWorldCommand.Text = "testforblock 134 238 240 minecraft:sandstone";
+			this.textBoxRestrictedWorldCommand.Text = "isWorld";
 			// 
 			// buttonOK
 			// 

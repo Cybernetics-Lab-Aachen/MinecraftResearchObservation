@@ -68,7 +68,18 @@ namespace MinecraftResearchObservation
 			try
 		    {
 				DebugWindow.writeLine(string.Format("Try to connect...\n"));
-			    RCONLogic.rconClient.setupStream(RCONLogic.minecraftServer, password: RCONLogic.minecraftRCONPassword);
+				if(RCONLogic.minecraftServer.Contains(":"))
+				{
+					var startPort = RCONLogic.minecraftServer.IndexOf(':');
+					var server = RCONLogic.minecraftServer.Substring(0, startPort);
+					var port = RCONLogic.minecraftServer.Replace(server + ":", string.Empty);
+					RCONLogic.rconClient.setupStream(server, int.Parse(port), RCONLogic.minecraftRCONPassword);
+				}
+				else
+				{
+			    	RCONLogic.rconClient.setupStream(RCONLogic.minecraftServer, password: RCONLogic.minecraftRCONPassword);
+				}
+				
 				RCONLogic.rconClient.fireAndForgetMessage(RCONMessageType.Command, "gamerule commandBlockOutput false");
 				RCONLogic.rconClient.fireAndForgetMessage(RCONMessageType.Command, "gamerule logAdminCommands false");
 				RCONLogic.rconClient.fireAndForgetMessage(RCONMessageType.Command, "gamerule sendCommandFeedback false");
