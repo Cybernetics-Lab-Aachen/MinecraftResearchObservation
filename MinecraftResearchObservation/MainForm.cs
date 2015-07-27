@@ -5,6 +5,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NETools.IO;
+using System.Reflection;
+using System.Linq;
 
 namespace MinecraftResearchObservation
 {
@@ -14,6 +16,7 @@ namespace MinecraftResearchObservation
 		private string metaInformation = string.Empty;
 		private string minecraftServer = string.Empty;
 		private string minecraftRCONPassword = string.Empty;
+		private string version = string.Empty;
 		private bool isRunning = false;
 		private ReaderWriterLockSlim stateLock = new ReaderWriterLockSlim();
 		
@@ -23,6 +26,13 @@ namespace MinecraftResearchObservation
 			// The InitializeComponent() call is required for Windows Forms designer support.
 			//
 			InitializeComponent();
+			
+			// Get the own version:
+			var versionAttribute = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyFileVersionAttribute), true).FirstOrDefault() as AssemblyFileVersionAttribute; 
+			this.version = versionAttribute != null ? versionAttribute.Version : "unknown";
+			
+			// Write the title:
+			this.Text = string.Format("[Mine]craft [Re]search [Ob]servation v{0}: {1}", version, metaInformation);
 			
 			this.destinationFolder = destinationFolder;
 			this.metaInformation = metaInformation;
@@ -36,7 +46,7 @@ namespace MinecraftResearchObservation
 			RCONLogic.setMinecraftServer(this.minecraftServer);
 			RCONLogic.setMinecraftRCONPassword(this.minecraftRCONPassword);
 			
-			new DebugWindow().Show(this);
+			new DebugWindow(string.Format("[Mine]craft [Re]search [Ob]servation v{0}, Messages: {1}", version, metaInformation)).Show(this);
 			
 			// Redirect any outpout to the standard out also in the message i.e. debug window:
 			Console.SetOut(new LineEventWriter(lineReceiver));

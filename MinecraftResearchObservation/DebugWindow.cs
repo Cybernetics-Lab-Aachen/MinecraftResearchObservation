@@ -13,12 +13,13 @@ namespace MinecraftResearchObservation
 		private static StringBuilder sb = new StringBuilder();
 		private static ReaderWriterLockSlim mutex = new ReaderWriterLockSlim();
 		
-		public DebugWindow()
+		public DebugWindow(string title)
 		{
 			//
 			// The InitializeComponent() call is required for Windows Forms designer support.
 			//
 			InitializeComponent();
+			this.Text = title;
 			Task.Factory.StartNew(() =>
 	        {
               	while(true)
