@@ -29,10 +29,10 @@ namespace MinecraftResearchObservation
 			
 			// Get the own version:
 			var versionAttribute = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyFileVersionAttribute), true).FirstOrDefault() as AssemblyFileVersionAttribute; 
-			this.version = versionAttribute != null ? versionAttribute.Version : "unknown";
+			this.version = versionAttribute != null ? versionAttribute.Version : "0";
 			
 			// Write the title:
-			this.Text = string.Format("[Mine]craft [Re]search [Ob]servation v{0}: {1}", version, metaInformation);
+			this.Text = string.Format("[Mine]craft [Re]search [Obs]ervation v{0}: {1}", version, metaInformation);
 			
 			this.destinationFolder = destinationFolder;
 			this.metaInformation = metaInformation;
@@ -46,7 +46,7 @@ namespace MinecraftResearchObservation
 			RCONLogic.setMinecraftServer(this.minecraftServer);
 			RCONLogic.setMinecraftRCONPassword(this.minecraftRCONPassword);
 			
-			new DebugWindow(string.Format("[Mine]craft [Re]search [Ob]servation v{0}, Messages: {1}", version, metaInformation)).Show(this);
+			new DebugWindow(string.Format("[Mine]craft [Re]search [Obs]ervation v{0}, Messages: {1}", version, metaInformation)).Show(this);
 			
 			// Redirect any outpout to the standard out also in the message i.e. debug window:
 			Console.SetOut(new LineEventWriter(lineReceiver));
